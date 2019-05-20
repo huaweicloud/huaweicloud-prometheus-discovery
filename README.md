@@ -1,0 +1,1 @@
+# huaweicloud-prometheus-discovery
