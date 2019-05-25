@@ -44,7 +44,7 @@ var domain = flag.String("domain", "", "The Name of the Domain to scope to (Iden
 var region = flag.String("region", "", "The region of the HuaweiCloud to use")
 var password = flag.String("password", "", "The Password to login with.")
 var port = flag.String("port", "9100", "")
-var isHuaweicloudModule = flag.Bool("config.model", false, "If the config.model is set to true, the model LabelName will added MetaLabelPrefix(__meta_huaweicloud_)")
+var isHuaweicloudModule = flag.Bool("model", false, "If the config.model is set to true, the model LabelName will added MetaLabelPrefix(__meta_huaweicloud_)")
 
 const (
 	huaweicloudLabelPrefix         = model.MetaLabelPrefix + "huaweicloud_"
