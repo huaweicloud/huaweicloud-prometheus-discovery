@@ -187,29 +187,6 @@ func genClient(c *Config, ao golangsdk.AuthOptionsProvider) (*golangsdk.Provider
 
 
 func getModelLabelsTags(allServers []servers.Server)([]*targetgroup.Group, error)  {
-
-	var del_m  map[string]interface{}
-	del_m = make(map[string]interface{}) //必可不少，分配内存
-	del_m["addr"] = "10.0.0.1"
-
-
-	delllllll := make([]interface{}, 1)
-	delllllll[0] = del_m
-
-	var del_m22  map[string]interface{}
-	del_m22 = make(map[string]interface{}) //必可不少，分配内存
-	del_m22["dsdf"] = delllllll
-
-	ttt := servers.Server{
-		Name:      "zhdsdfsdf",
-		Addresses: del_m22,
-	}
-
-
-	allServers = append(allServers, allServers[0])
-	allServers = append(allServers, ttt)
-
-
 	tg := &targetgroup.Group{
 		Source: fmt.Sprintf("OS_" + *region),
 	}
@@ -372,7 +349,7 @@ func checkConfigOptions() error  {
 	return nil
 }
 
-func initClient()(client *golangsdk.ServiceClient)  {
+func initClient()(*golangsdk.ServiceClient, error)  {
 	configOptions := Config{
 		IdentityEndpoint: "https://iam.cn-north-1.myhwclouds.com/v3",
 		TenantName:      *projectName,
@@ -385,7 +362,11 @@ func initClient()(client *golangsdk.ServiceClient)  {
 		Insecure:        true,
 	}
 
-	buildClient(&configOptions)
+	err := buildClient(&configOptions)
+	if err != nil {
+		fmt.Println("Failed to build client: ", err)
+		return nil, err
+	}
 
 	//Init service client
 	client, clientErr := openstack.NewComputeV2(configOptions.HwClient, golangsdk.EndpointOpts{
@@ -393,10 +374,10 @@ func initClient()(client *golangsdk.ServiceClient)  {
 	})
 	if clientErr != nil {
 		fmt.Println("Failed to get the NewComputeV2 client: ", clientErr)
-		return
+		return nil, clientErr
 	}
 
-	return client
+	return client, err
 }
 
 func main() {
@@ -409,10 +390,16 @@ func main() {
 	}
 
 	work := func() {
-		client := initClient()
+		client, err := initClient()
+		if err != nil {
+			fmt.Println("Init client fail:", err)
+			return
+		}
+
 		allServers, err := ServersList(client)
 		if err != nil {
 			fmt.Println("ServersList fail:", err)
+			return
 		}
 
 		if len(allServers) == 0 {
@@ -438,22 +425,6 @@ func main() {
 				return
 			}
 		}
-
-
-		////////////////////////////////////////del
-		//type Books struct {
-		//	Title string
-		//	Author string `json:"age"`
-		//}
-		//
-		//var Book1 Books        /* 声明 Book1 为 Books 类型 */
-		//
-		///* book 1 描述 */
-		//Book1.Title = "Go dd"
-		//Book1.Author = "www.runoob.com"
-		//m , err = json.MarshalIndent(Book1, "", " ")
-		//fmt.Println(m)
-		///////////////////////////////////////////////////////////
 
 		log.Printf("Writing discovered exporters to %s", *outFile)
 		err = ioutil.WriteFile(*outFile, m, 0644)
