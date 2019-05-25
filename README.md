@@ -17,7 +17,7 @@ go build
 Usage of ./huaweicloud-prometheus-discovery:
   -accessKey string
         The access key of the HuaweiCloud to use (optional)
-  -config.model
+  -model
         If the config.model is set to true, the model LabelName will added MetaLabelPrefix(__meta_huaweicloud_)
   -domain string
         The Name of the Domain to scope to (Identity v3).
