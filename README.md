@@ -15,29 +15,29 @@ go build
 ## Help
 ```
 Usage of ./huaweicloud-prometheus-discovery:
-  -config.accessKey string
+  -accessKey string
         The access key of the HuaweiCloud to use (optional)
-  -config.domain string
-        The Name of the Domain to scope to (Identity v3).
   -config.model
         If the config.model is set to true, the model LabelName will added MetaLabelPrefix(__meta_huaweicloud_)
-  -config.password string
+  -domain string
+        The Name of the Domain to scope to (Identity v3).
+  -interval int
+        interval at which to scrape the Huaweicloud API for ECS service discovery information, The unit is seconds (default 60)
+  -password string
         The Password to login with.
-  -config.port string
+  -port string
          (default "9100")
-  -config.projectName string
+  -projectName string
         The Name of the Tenant (Identity v2) or Project (Identity v3) to login with.
-  -config.region string
+  -region string
         The region of the HuaweiCloud to use
-  -config.scrape-interval duration
-        interval at which to scrape the Huaweicloud API for ECS service discovery information (default 1m0s)
-  -config.scrape-times int
-        how many times to scrape before exiting (0 = infinite)
-  -config.secretKey string
+  -secretKey string
         The secret key of the HuaweiCloud to use.
-  -config.userName string
+  -times int
+        how many times to scrape before exiting (0 = infinite)
+  -userName string
         The Username to login with.
-  -config.write-to string
+  -write-to string
         path of file to write ECS service discovery information to (default "ecs_file_sd.yml")
 ```
 
