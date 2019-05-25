@@ -1,18 +1,18 @@
 # huaweicloud-prometheus-discovery
 
-#Install
+##Install
 
 ```
 git clone https://github.com/huaweicloud/huaweicloud-prometheus-discovery
 go build
 ```
 
-#Usage
+##Usage
 ```
  ./huaweicloud-prometheus-discovery  -config.projectName="cn-north-1" -config.userName=username -config.domain=domainname -config.accessKey=access_key  -config.secretKey=secret_key -config.region="cn-north-1"
 ```
 
-#Help
+##Help
 ```
 Usage of ./huaweicloud-prometheus-discovery:
   -config.accessKey string
@@ -41,7 +41,7 @@ Usage of ./huaweicloud-prometheus-discovery:
         path of file to write ECS service discovery information to (default "ecs_file_sd.yml")
 ```
 
-#example of file
+##example of file
 
 ```
 [
@@ -65,7 +65,7 @@ Usage of ./huaweicloud-prometheus-discovery:
 
 ```
 
-#example prometheus setting
+##example prometheus setting
 
 ```
 scrape_configs:
