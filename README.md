@@ -1,6 +1,6 @@
 # huaweicloud-prometheus-discovery
 
-Prometheus filed service discovery for [Huaweicloud](https://www.huaweicloud.com/)
+Prometheus filed service discovery for [Huaweicloud](https://www.huaweicloud.com/).
 
 ## Install
 
