@@ -45,6 +45,8 @@ var region = flag.String("region", "", "The region of the HuaweiCloud to use")
 var password = flag.String("password", "", "The Password to login with.")
 var port = flag.String("port", "9100", "")
 var isHuaweicloudModule = flag.Bool("model", false, "If the config.model is set to true, the model LabelName will added MetaLabelPrefix(__meta_huaweicloud_)")
+var debug = flag.Bool("debug", false, "If debug the code.")
+
 
 const (
 	huaweicloudLabelPrefix         = model.MetaLabelPrefix + "huaweicloud_"
@@ -271,6 +273,11 @@ func getSimpleTags(allServers []servers.Server)([]*PrometheusInfo, error) {
 	pis := []*PrometheusInfo{&pi}
 
 	for _, server := range allServers {
+		if (*debug == true) {
+			serverJson, _ := json.MarshalIndent(server, "", " ")
+			fmt.Println(string(serverJson))
+		}
+
 		pi, isSame := getPi(pis, server.Name)
 
 		for _, address := range server.Addresses {
@@ -293,6 +300,11 @@ func getSimpleTags(allServers []servers.Server)([]*PrometheusInfo, error) {
 				addr, ok := md1["addr"].(string)
 				if !ok {
 					fmt.Println("msg", "Invalid type for address, expected string")
+					continue
+				}
+
+				if (md1["OS-EXT-IPS:type"].(string) != "fixed") {
+					fmt.Println("msg", "Invalid OS-EXT-IPS:type for address:", addr)
 					continue
 				}
 
