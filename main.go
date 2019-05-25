@@ -32,18 +32,18 @@ import (
 )
 
 
-var outFile = flag.String("config.write-to", "ecs_file_sd.yml", "path of file to write ECS service discovery information to")
-var interval = flag.Duration("config.scrape-interval", 60*time.Second, "interval at which to scrape the Huaweicloud API for ECS service discovery information")
-var times = flag.Int("config.scrape-times", 0, "how many times to scrape before exiting (0 = infinite)")
+var outFile = flag.String("write-to", "ecs_file_sd.yml", "path of file to write ECS service discovery information to")
+var interval = flag.Int("interval", 60, "interval at which to scrape the Huaweicloud API for ECS service discovery information, The unit is seconds")
+var times = flag.Int("times", 0, "how many times to scrape before exiting (0 = infinite)")
 
-var projectName = flag.String("config.projectName", "", "The Name of the Tenant (Identity v2) or Project (Identity v3) to login with.")
-var userName = flag.String("config.userName", "", "The Username to login with.")
-var accessKey = flag.String("config.accessKey", "", "The access key of the HuaweiCloud to use (optional)")
-var secretKey = flag.String("config.secretKey", "", "The secret key of the HuaweiCloud to use.")
-var domain = flag.String("config.domain", "", "The Name of the Domain to scope to (Identity v3).")
-var region = flag.String("config.region", "", "The region of the HuaweiCloud to use")
-var password = flag.String("config.password", "", "The Password to login with.")
-var port = flag.String("config.port", "9100", "")
+var projectName = flag.String("projectName", "", "The Name of the Tenant (Identity v2) or Project (Identity v3) to login with.")
+var userName = flag.String("userName", "", "The Username to login with.")
+var accessKey = flag.String("accessKey", "", "The access key of the HuaweiCloud to use (optional)")
+var secretKey = flag.String("secretKey", "", "The secret key of the HuaweiCloud to use.")
+var domain = flag.String("domain", "", "The Name of the Domain to scope to (Identity v3).")
+var region = flag.String("region", "", "The region of the HuaweiCloud to use")
+var password = flag.String("password", "", "The Password to login with.")
+var port = flag.String("port", "9100", "")
 var isHuaweicloudModule = flag.Bool("config.model", false, "If the config.model is set to true, the model LabelName will added MetaLabelPrefix(__meta_huaweicloud_)")
 
 const (
@@ -434,7 +434,7 @@ func main() {
 	}
 
 	s := time.NewTimer(1 * time.Millisecond)
-	t := time.NewTicker(*interval)
+	t := time.NewTicker(time.Duration(*interval) * time.Second)
 	n := *times
 
 	for {
