@@ -5,15 +5,8 @@ Prometheus filed service discovery for [Huaweicloud](https://www.huaweicloud.com
 ## Install
 
 ```
-$ wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
-$ sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
-$ export PATH=$PATH:/usr/local/go/bin # You should put in your .profile or .bashrc
-$ go version # to verify it runs and version #
+Download the binary from the [Releases](https://github.com/huaweicloud/huaweicloud-prometheus-discovery/releases) page.
 
-$ git clone https://github.com/huaweicloud/huaweicloud-prometheus-discovery
-$ cd huaweicloud-prometheus-discovery
-$ go mod tidy
-$ go build
 ```
 
 ## Usage
