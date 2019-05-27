@@ -59,7 +59,7 @@ Usage of ./huaweicloud-prometheus-discovery:
         path of file to write ECS service discovery information to (default "ecs_file_sd.yml")
 ```
 
-## Example of file
+## Example of file(ecs_file_sd.yml)
 
 ```
 [
