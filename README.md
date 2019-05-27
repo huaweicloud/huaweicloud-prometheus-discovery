@@ -16,7 +16,7 @@ tar -zxvf huaweicloud-prometheus-discovery-1.0.0.linux-amd64.tar.gz
  ./huaweicloud-prometheus-discovery  -config.projectName="cn-north-1" -config.userName=username -config.domain=domainname -config.accessKey=access_key  -config.secretKey=secret_key -config.region="cn-north-1"
 ```
 
-## Exact steps on clean Ubuntu 16.04
+## Building The Discovery with Exact steps on clean Ubuntu 16.04
 ```
 $ wget https://dl.google.com/go/go1.12.5.linux-amd64.tar.gz
 $ sudo tar -C /usr/local -xzf go1.12.5.linux-amd64.tar.gz
