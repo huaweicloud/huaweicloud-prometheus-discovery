@@ -6,6 +6,10 @@ Prometheus filed service discovery for [Huaweicloud](https://www.huaweicloud.com
 
 Download the binary from the [Releases](https://github.com/huaweicloud/huaweicloud-prometheus-discovery/releases) page.
 
+```
+wget https://github.com/huaweicloud/huaweicloud-prometheus-discovery/releases/download/1.0.0/huaweicloud-prometheus-discovery-1.0.0.linux-amd64.tar.gz
+tar -zxvf huaweicloud-prometheus-discovery-1.0.0.linux-amd64.tar.gz
+```
 
 ## Usage
 ```
