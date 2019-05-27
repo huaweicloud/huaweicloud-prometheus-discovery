@@ -4,10 +4,8 @@ Prometheus filed service discovery for [Huaweicloud](https://www.huaweicloud.com
 
 ## Install
 
-```
 Download the binary from the [Releases](https://github.com/huaweicloud/huaweicloud-prometheus-discovery/releases) page.
 
-```
 
 ## Usage
 ```
