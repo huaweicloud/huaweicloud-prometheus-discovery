@@ -36,6 +36,7 @@ var outFile = flag.String("write-to", "ecs_file_sd.yml", "path of file to write 
 var interval = flag.Int("interval", 60, "interval at which to scrape the Huaweicloud API for ECS service discovery information, The unit is seconds")
 var times = flag.Int("times", 0, "how many times to scrape before exiting (0 = infinite)")
 
+var authURL = flag.String("authURL", "", "The authURL to login with.")
 var projectName = flag.String("projectName", "", "The Name of the Tenant (Identity v2) or Project (Identity v3) to login with.")
 var userName = flag.String("userName", "", "The Username to login with.")
 var accessKey = flag.String("accessKey", "", "The access key of the HuaweiCloud to use (optional)")
@@ -363,7 +364,7 @@ func checkConfigOptions() error  {
 
 func initClient()(*golangsdk.ServiceClient, error)  {
 	configOptions := Config{
-		IdentityEndpoint: "https://iam.cn-north-1.myhwclouds.com/v3",
+		IdentityEndpoint: *authURL,
 		TenantName:      *projectName,
 		AccessKey:       *accessKey,
 		SecretKey:       *secretKey,
