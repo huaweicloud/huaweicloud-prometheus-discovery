@@ -383,7 +383,7 @@ func initClient()(*golangsdk.ServiceClient, error)  {
 
 	//Init service client
 	client, clientErr := openstack.NewComputeV2(configOptions.HwClient, golangsdk.EndpointOpts{
-		Region: "cn-north-1",
+		Region: *region,
 	})
 	if clientErr != nil {
 		fmt.Println("Failed to get the NewComputeV2 client: ", clientErr)
